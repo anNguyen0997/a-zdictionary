@@ -1,0 +1,44 @@
+
+#searchBox {
+    height: 36px;
+    width: 240px;
+    border: 2px solid #1d3557;
+    border-radius: 10px;
+    margin-right: 6px;
+}
+
+#searchButton {
+    height: 36px;
+    border-radius: 10px;
+    border: 2px solid #1d3557;
+    background-color: #457b9d;
+    color: white;
+    padding: 3px 10px;
+}
+
+#word {
+    font-size: 3.5vh;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-top: 30px;
+
+    color: #1d3557;
+}
+
+#synonym {
+    font-size: 2vh;
+    padding: 6px 16px;
+    margin: 8px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: #457b9d;
+    color: white;
+}
+
+#synonymDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 30px;
+}

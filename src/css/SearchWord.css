@@ -1,0 +1,84 @@
+
+body {
+    background-color: #f5ebe0;
+}
+
+#searchWordDiv {
+    color: #457b9d;
+}
+
+#searchWordDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+#searchBox {
+    height: 36px;
+    width: 240px;
+    border: 2px solid #457b9d;
+    border-radius: 10px;
+    margin-right: 6px;
+}
+
+#searchButton {
+    height: 36px;
+    border-radius: 10px;
+    border: 2px solid #1d3557;
+    background-color: #457b9d;
+    color: white;
+    padding: 3px 10px;
+}
+
+#searchButton:hover {
+    background-color: #1d3557;
+}
+
+#wordDetailsDiv {
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 10px 15px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#wordDataDiv {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin: 20px;
+
+    background-color: #457b9d;
+}
+
+#word {
+    font-size: 3.5vh;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-top: 30px;
+
+    color: #1d3557;
+}
+
+#pos {
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 600;
+    color: #1d3557;
+}
+
+#def {
+    font-size: 20px;
+    color: white;
+}
+
+#eg {
+    font-style: italic;
+}

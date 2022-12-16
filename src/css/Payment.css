@@ -1,0 +1,55 @@
+.App {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+#paymentMessage {
+    color: #457b9d;
+}
+
+#price {
+    margin-top: 40px;
+    font-style: italic;
+    color: #1d3557;
+}
+
+#paymentButton {
+    border-radius: 10px;
+    padding: 5px 12px;
+    border: 2px solid #1d3557;
+    color:white;
+    background-color: #457b9d;
+}
+
+#paymentButton:hover {
+    background-color: #1d3557;
+}
+
+#formDiv {
+    padding: 20px 20px;
+    margin-top: 40px;
+}
+
+#cardInfo {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding: 8px 16px;
+}
+
+#payButton {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding: 6px 15px;
+    border: 2px solid #1d3557;
+    border-radius: 10px;
+    background-color: #457b9d;
+    color: white;
+}
+
+#successPayment {
+    color: #457b9d;
+    margin-top: 90px;
+    margin-bottom: 40px;
+    font-weight: 800;
+}
