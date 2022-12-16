@@ -7,8 +7,8 @@ import { addWord } from '../actions/words'
 const SearchWord = () => {
     const [word, setWord] = useState("")
     const [enteredWord, setEnteredWord] = useState("")
-    const [definition, setDefinition] = useState("")
-    const [partOfSpeech, setPartOfSpeech] = useState("")
+    // const [definition, setDefinition] = useState("")
+    // const [partOfSpeech, setPartOfSpeech] = useState("")
 
     const [wordResults, setWordResults] = useState([])
     const [resultList, setResultList] = useState([])
