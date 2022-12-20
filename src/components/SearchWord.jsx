@@ -28,7 +28,7 @@ const SearchWord = () => {
         let data = await response.json()
         let wordResults = await data.results
         
-        console.log(data)
+        // console.log(data)
         // console.log(wordResults)
 
         for (let i = 0; i < wordResults.length; i++) {
