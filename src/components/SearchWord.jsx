@@ -18,7 +18,7 @@ const SearchWord = () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'apikey',
+            'X-RapidAPI-Key': '3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df',
             'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
     };
