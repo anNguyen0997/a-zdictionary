@@ -4,6 +4,7 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import './index.css';
 import Layout from './components/Layout';
+import WordOfTheDay from './components/WordOfTheDay';
 import SearchWord from './components/SearchWord';
 import SearchSynonyms from './components/SearchSynonyms';
 import WordsLearned from './components/WordsLearned';
@@ -16,7 +17,7 @@ const store = createStore(reducer)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
 
       <Router>
@@ -24,6 +25,7 @@ root.render(
           <Routes>
 
             <Route path="/" element={ <SearchWord /> } />
+            <Route path="/wordoftheday" element={ <WordOfTheDay /> } />
             <Route path="/synonyms" element={ <SearchSynonyms /> } />
             <Route path="/wordslearned" element={ <WordsLearned /> } />
             <Route path="/payment" element={ <App /> } />
@@ -33,5 +35,5 @@ root.render(
       </Router>
 
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

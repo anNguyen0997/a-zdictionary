@@ -14,7 +14,7 @@ const SearchWord = () => {
     const [resultList, setResultList] = useState([])
     
     const dispatch = useDispatch()
-
+    
     const options = {
         method: 'GET',
         headers: {
@@ -27,9 +27,9 @@ const SearchWord = () => {
         let response = await fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}`, options)
         let data = await response.json()
         let wordResults = await data.results
-        
-        // console.log(data)
         // console.log(wordResults)
+
+        let newWordResults = []
 
         for (let i = 0; i < wordResults.length; i++) {
             // for (let j = 0; j < wordResults[i].examples.length; j++) {
@@ -40,12 +40,12 @@ const SearchWord = () => {
                     partOfSpeech: wordResults[i].partOfSpeech,
                     // examples: wordResults[i].examples[j]
                 }
-
                 // console.log(resultObj)
-                let newWordResults = [resultObj, ...wordResults]
-                setWordResults(newWordResults)
+                newWordResults.push(resultObj)
         // }
-    }
+        }
+
+        setWordResults(newWordResults)
 
         let newresultObj = {
             word,
@@ -68,15 +68,15 @@ const SearchWord = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        setEnteredWord(word)
+        // resetting values to empty strings
         setWord("")
         setDefinition("")
         setPartOfSpeech("")
-
+        setEnteredWord(word)
         getWord(word)
     }
     
-    
+
   return (
     <>
         <div id="searchWordDiv">
@@ -93,7 +93,7 @@ const SearchWord = () => {
 
                 <div id="wordDetailsDiv">
                     {wordResults.map(resultsObj => {
-                        return <SearchWordDetails key={resultsObj} wordObj={resultsObj} />
+                        return <SearchWordDetails key={resultsObj.definition} wordObj={resultsObj} />
                     })}
                 </div>
             </div>

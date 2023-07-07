@@ -19,6 +19,7 @@ function Navibar() {
           <Nav>
             <Link to="/" id="link">Search Word</Link>
             <Link to="/synonyms" id="link">Search Synonyms</Link>
+            <Link to="/wordoftheday" id="link">Word of the Day</Link>
             <Link to="/wordslearned" id="link">Words Learned</Link>
             <Link to="/payment" id="link">Support</Link>
           </Nav>
