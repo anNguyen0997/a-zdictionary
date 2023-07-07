@@ -20,7 +20,7 @@ function Navibar() {
             <Link to="/" id="link">Search Word</Link>
             <Link to="/synonyms" id="link">Search Synonyms</Link>
             <Link to="/wordslearned" id="link">Words Learned</Link>
-            <Link to="/payment" id="link">Support</Link>
+            {/* <Link to="/payment" id="link">Support</Link> */}
           </Nav>
         </Navbar.Collapse>
 

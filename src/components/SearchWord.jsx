@@ -29,7 +29,7 @@ const SearchWord = () => {
         let wordResults = await data.results
         
         // console.log(data)
-        // console.log(wordResults)
+        console.log(wordResults)
 
         for (let i = 0; i < wordResults.length; i++) {
             // for (let j = 0; j < wordResults[i].examples.length; j++) {
