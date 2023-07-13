@@ -27,13 +27,7 @@ const SearchWord = () => {
         let response = await fetch(`https://wordsapiv1.p.rapidapi.com/words/${word}`, options)
         let data = await response.json()
         let wordResults = await data.results
-<<<<<<< HEAD
         // console.log(wordResults)
-=======
-        
-        // console.log(data)
-        console.log(wordResults)
->>>>>>> 548bd52a81f4d537eb45918d73fe0dfa25f77483
 
         let newWordResults = []
 

@@ -1,54 +1,107 @@
 import React, { useEffect, useState } from "react";
+import listOfWords from '../components/listOfWords.txt';
+import '../css/WordOfTheDay.css'
+import WordDetails from '../components/WordOfTheDayDetails'
 
 function WordOfTheDay() {
 
-  const [isValidResponse, setIsValidResponse] = useState(false)
+  const [randomWord, setRandomWord] = useState('')
+  const [results, setResults] = useState([])
 
-  const getWordOfTheDay = async() => {
-    const url = 'https://wordsapiv1.p.rapidapi.com/words/?random=true'
+  const todaysDate = new Date()
+  const dateOptions = {weekday: 'long', month: 'long', day: 'numeric'}
+  const formattedDate = todaysDate.toLocaleDateString(undefined, dateOptions)
+  const storageKey = 'wordOfTheDay';
+
+  // retrieving a random word from a list
+  const getRandomWord = () => {
+    fetch(listOfWords)
+      .then(response => response.text())
+      .then(textFile => {
+        const splitList = textFile.split(', ')
+        const word = splitList[Math.floor(Math.random() * splitList.length)]
+        setRandomWord(word)
+        console.log(word)
+      })
+  };
+
+  // fetching api to retrieve word details
+  const getWordOfTheDay = async () => {
+    const url = `https://wordsapiv1.p.rapidapi.com/words/${randomWord}`;
     const options = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        'X-RapidAPI-Key': '3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df',
-		    'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-      }
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    console.log(data)
+        "X-RapidAPI-Key": "3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df",
+        "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
+      },
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-    // checking if random fetch is a rhyme
-    if (data.rhymes || !data.results) {
-      setIsValidResponse(false)
-      console.log('not valid')
+    const wordResults = [];
+    for (let i = 0; i < data.results.length; i++) {
+      // joining synonyms with ','
+      const synonyms = data.results[i].synonyms.join(', ');
+      // pushing results into wordResults array to map
+      wordResults.push({
+        definition: data.results[i].definition,
+        partOfSpeech: data.results[i].partOfSpeech,
+        synonyms
+      });
+    }
+    setResults(wordResults);
+  };
+
+  useEffect(() => {
+    if (randomWord) {
+      getWordOfTheDay()
+    }
+  }, [randomWord]);
+
+  
+  useEffect(() => {
+    const storedWord = localStorage.getItem(storageKey);
+    // check if there is a stored word and if its date matches today's date
+    if (storedWord && formattedDate === JSON.parse(storedWord).date) {
+      // parse stored word from sting to object
+      const storedData = JSON.parse(storedWord);
+      // updates the components state
+      setRandomWord(storedData.word);
+      setResults(storedData.results);
+      // else call getRandomWord() and set the component's state
     } else {
-      setIsValidResponse(true)
-      console.log('valid')
+      getRandomWord();
     }
-  }
+  }, []);
 
-  while (!isValidResponse) {
-    getWordOfTheDay()
-
-    if (isValidResponse){
-      break
+  // executes when the dependency variables are changed
+  useEffect(() => {
+    // if randomWord and results are not empty
+    if (randomWord && results.length > 0) {
+      // then create a new object storedWord, with the date, the word, 
+        // and its results(word details)
+      const storedWord = {
+        date: formattedDate,
+        word: randomWord,
+        results: results
+      };
+      // setting the storedWord into localStorage
+      localStorage.setItem(storageKey, JSON.stringify(storedWord));
     }
-  }
-
-  // useEffect(() => {
-  //   if (!isValidResponse) {
-  //     getWordOfTheDay()
-  //   }
-  // }, [isValidResponse]);
-
+  }, [randomWord, results]);
 
   return (
     <>
-      {/* <div>
-        <h3 id='word' key={wordObj.word}>{wordObj.word}</h3>
-        <p id='definition' key={wordObj.definition}>{wordObj.definition}</p>
-        <p id='partofspeech' key={wordObj.partOfSpeech}>{wordObj.partOfSpeech}</p>
-      </div> */}
+      <div id="container" key={randomWord}>
+
+        <div id='wordofthedayContainer'>
+          <h5>Word of the Day ({formattedDate}): </h5>
+          <h3 id="wordoftheday">{randomWord}</h3>
+        </div>
+
+        <WordDetails results={results} />
+
+      </div>
     </>
   );
 }

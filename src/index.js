@@ -9,7 +9,7 @@ import SearchWord from './components/SearchWord';
 import SearchSynonyms from './components/SearchSynonyms';
 import WordsLearned from './components/WordsLearned';
 import reducer from './reducer/reducer';
-import App from './App';
+// import App from './App';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
@@ -28,7 +28,7 @@ root.render(
             <Route path="/wordoftheday" element={ <WordOfTheDay /> } />
             <Route path="/synonyms" element={ <SearchSynonyms /> } />
             <Route path="/wordslearned" element={ <WordsLearned /> } />
-            <Route path="/payment" element={ <App /> } />
+            {/* <Route path="/payment" element={ <App /> } /> */}
             
           </Routes>
         </Layout>
