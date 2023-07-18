@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import '../css/SearchWord.css'
+import { addWord } from '../../actions/words'
 import SearchWordDetails from './SearchWordDetails'
-import { addWord } from '../actions/words'
+import '../../css/SearchWord.css'
 
 const SearchWord = () => {
     const [word, setWord] = useState("")
     const [enteredWord, setEnteredWord] = useState("")
     const [definition, setDefinition] = useState("")
     const [partOfSpeech, setPartOfSpeech] = useState("")
-
     const [wordResults, setWordResults] = useState([])
     const [resultList, setResultList] = useState([])
     
@@ -18,7 +17,7 @@ const SearchWord = () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df',
+            'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
             'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
     };
@@ -28,6 +27,7 @@ const SearchWord = () => {
         let data = await response.json()
         let wordResults = await data.results
         // console.log(wordResults)
+        console.log(process.env)
 
         let newWordResults = []
 
@@ -76,7 +76,6 @@ const SearchWord = () => {
         getWord(word)
     }
     
-
   return (
     <>
         <div id="searchWordDiv">

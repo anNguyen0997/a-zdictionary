@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../css/SearchSynonyms.css'
+import '../../css/SearchSynonyms.css'
 
 const SearchSynonyms = () => {
     const [word, setWord] = useState("")
@@ -9,18 +9,28 @@ const SearchSynonyms = () => {
     const options = {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df',
+            'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
             'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
         }
     };
 
     const getSynonyms = async(word) => {
-        let response = await fetch (`https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`, options)
-        let data = await response.json()
-        let synonyms = data.synonyms
+        try {
+            let response = await fetch (`https://wordsapiv1.p.rapidapi.com/words/${word}/synonyms`, options)
+            let data = await response.json()
+            let synonyms = data.synonyms
 
-        console.log(synonyms)
-        setSynonyms(synonyms)
+            if (data && data.synonyms) {
+                setSynonyms(data.synonyms);
+              } else {
+                setSynonyms([]);
+              }
+        } catch (error) {
+              console.error('Error fetching synonyms:', error);
+              setSynonyms([]);
+        }
+            // console.log(synonyms)
+            // setSynonyms(synonyms)
     }
 
     const handleSubmit = (e) => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import listOfWords from '../components/listOfWords.txt';
-import '../css/WordOfTheDay.css'
-import WordDetails from '../components/WordOfTheDayDetails'
+import listOfWords from '../listOfWords.txt';
+import WordDetails from './WordOfTheDayDetails';
+import '../../css/WordOfTheDay.css';
 
 function WordOfTheDay() {
 
@@ -31,7 +31,7 @@ function WordOfTheDay() {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "3bb70894e2msh94c44064b725290p173e5bjsnd21f210e98df",
+        "X-RapidAPI-Key": process.env.REACT_APP_API_KEY,
         "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
       },
     };
@@ -58,7 +58,6 @@ function WordOfTheDay() {
     }
   }, [randomWord]);
 
-  
   useEffect(() => {
     const storedWord = localStorage.getItem(storageKey);
     // check if there is a stored word and if its date matches today's date
@@ -93,14 +92,11 @@ function WordOfTheDay() {
   return (
     <>
       <div id="container" key={randomWord}>
-
         <div id='wordofthedayContainer'>
-          <h5>Word of the Day ({formattedDate}): </h5>
+          <h5 id='date'>Word of the Day (<span id='day'>{formattedDate}</span>) : </h5>
           <h3 id="wordoftheday">{randomWord}</h3>
         </div>
-
         <WordDetails results={results} />
-
       </div>
     </>
   );

@@ -6,7 +6,7 @@ function WordOfTheDayDetails({results}) {
       {Array.isArray(results) && results.length > 0 ? (
         <div id='wordDetailsContainer'>
           {results.map((resultObj, i) => (
-            <React.Fragment key={i}>
+            <>
               <div id='wordDetails'>
                 <p id="partofspeech">{resultObj.partOfSpeech}</p>
                 <p id="definition">{resultObj.definition}</p>
@@ -14,7 +14,7 @@ function WordOfTheDayDetails({results}) {
                   <p id="synonyms">synonyms: {resultObj.synonyms}</p>
                 )}
               </div>
-            </React.Fragment>
+            </>
           ))}
         </div>
       ) : (

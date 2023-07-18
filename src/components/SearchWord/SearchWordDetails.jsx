@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/SearchWord.css'
+import '../../css/SearchWord.css'
 
 const SearchWordDetails = ({wordObj}) => {
   // console.log(wordObj)

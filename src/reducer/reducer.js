@@ -1,4 +1,3 @@
-
 const reducer = (state, action) => {
     if (state === undefined) {
         state = {
@@ -20,4 +19,4 @@ const reducer = (state, action) => {
     }
 }
 
-export default reducer
+export default reducer 

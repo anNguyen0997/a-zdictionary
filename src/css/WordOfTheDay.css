@@ -5,15 +5,25 @@ body {
 
 #container {
    text-align: center;
+   padding: 4vh;
+}
+
+#date {
+    color: #1d3557;
+}
+
+#day {
+    font-style: italic;
 }
 
 #wordofthedayContainer {
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    margin-bottom: 4vh;
 }
 
 #wordoftheday {
+    font-size: 40px;
     font-weight: 700;
     text-transform: capitalize;
     color: #1d3557;
@@ -23,30 +33,34 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-  }
+    gap: 10px;
+}
 
 #wordDetails {
+    background-color: #457b9d;
     text-align: justify;
     border: 2px solid #1d3557;
     border-radius: 10px;
-    width: 30%;
     margin-bottom: 20px;
-    padding: 14px;
     padding-bottom: 0px;
+    width: 380px;
+    padding: 14px;
+    color: white;
+
 }
-
-#defintion {
-
-}
-
 #partofspeech {
     font-style: italic;
+    color: #1d3557;
+    font-weight: 600;
+    margin-bottom: 0px;
 }
 
 #synonyms {
-
+    margin-top: 20px;
 }
 
 #loadingMsg {
-
+    color: #1d3557;
+    font-weight: 500;
+    font-size: 35px;
 }
