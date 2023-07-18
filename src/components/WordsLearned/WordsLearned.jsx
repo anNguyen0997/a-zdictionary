@@ -15,7 +15,7 @@ function WordsLearned() {
         
           <div id="wordsDiv">
             {words.map(word=> {
-              return <WordsLearnedDetails word={word} />
+              return <WordsLearnedDetails word={word} key={word}/>
             })}
           </div>
 

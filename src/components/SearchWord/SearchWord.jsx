@@ -27,7 +27,6 @@ const SearchWord = () => {
         let data = await response.json()
         let wordResults = await data.results
         // console.log(wordResults)
-        console.log(process.env)
 
         let newWordResults = []
 

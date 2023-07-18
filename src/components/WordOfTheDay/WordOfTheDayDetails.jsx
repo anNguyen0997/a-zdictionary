@@ -6,15 +6,15 @@ function WordOfTheDayDetails({results}) {
       {Array.isArray(results) && results.length > 0 ? (
         <div id='wordDetailsContainer'>
           {results.map((resultObj, i) => (
-            <>
-              <div id='wordDetails'>
+            
+              <div id='wordDetails' key={i}>
                 <p id="partofspeech">{resultObj.partOfSpeech}</p>
                 <p id="definition">{resultObj.definition}</p>
                 {resultObj.synonyms.length > 0 && (
                   <p id="synonyms">synonyms: {resultObj.synonyms}</p>
                 )}
               </div>
-            </>
+            
           ))}
         </div>
       ) : (
